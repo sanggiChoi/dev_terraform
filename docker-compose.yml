@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  dev_tf:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: dev_tf
+    restart: unless-stopped
+    hostname: dev_tf
+    # tty: true
+    # stdin_open: true
+    user: root
+    # init: true
+    working_dir: /root/
+    privileged: true
+    volumes:
+      - type: bind
+        source: ./
+        target: /root/terraform
+    command: /sbin/init
