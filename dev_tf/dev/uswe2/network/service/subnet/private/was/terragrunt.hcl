@@ -1,6 +1,6 @@
 
 terraform {
-  source = "../../../../../../modules/subnet"
+  source = "../../../../../../../modules/subnet"
 }
 
 terraform_version_constraint = ">= 0.12"
