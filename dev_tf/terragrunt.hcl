@@ -15,9 +15,9 @@ remote_state {
 
   config = {
     encrypt         = true
-    bucket          = "dev-apne2-terraform-s3"
+    bucket          = "dev-jk-uswe2-terraform-s3"
     key             = "prd/${path_relative_to_include()}/terraform.tfstate"
-    region          = "ap-northeast-2"
-    dynamodb_table  = "dev-apne2-terraform-dynamodb"
+    region          = "us-west-2"
+    dynamodb_table  = "dev-jk-uswe2-terraform-dynamodb"
   }
 }

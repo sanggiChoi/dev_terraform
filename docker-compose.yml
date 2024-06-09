@@ -1,12 +1,12 @@
 version: "3.8"
 services:
-  dev_tf:
+  dev-tf:
     build:
       context: .
       dockerfile: ./Dockerfile
     container_name: dev_tf
     restart: unless-stopped
-    hostname: dev_tf
+    hostname: dev-tf
     # tty: true
     # stdin_open: true
     user: root

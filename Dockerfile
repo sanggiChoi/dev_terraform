@@ -8,7 +8,7 @@ LABEL "purpose"="local"
 #RUN yum -y groupinstall "Development Tools"
 RUN yum erase 'ntp*'
 RUN yum update -y && \
-    yum install -y net-tools git tar wget unzip curl tree man vim iputils && \
+    yum install -y net-tools git tar wget unzip tree man vim iputils && \
     yum install -y gcc zlib-devel bzip2 bzip2-devel readline readline-devel sqlite sqlite-devel openssl openssl-devel libffi-devel chrony && \
     yum clean all
 
@@ -20,17 +20,19 @@ RUN rm -rf /tmp/packer_1.7.4_linux_amd64.zip
 
 
 # install direnv 
-RUN wget -O direnv https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64 && \
-    chmod +x direnv && \
-    mv direnv /usr/local/bin/ 
+RUN curl -sfL https://direnv.net/install.sh | bash && \
+    echo "eval '$(direnv hook bash)'" >> ~/.bashrc
+# RUN wget -O direnv https://github.com/direnv/direnv/releases/download/v2.17.0/direnv.linux-amd64 && \
+#     chmod +x direnv && \
+#     mv direnv /usr/local/bin/ 
 #    && \
 #    echo 'eval "$(direnv hook bash)"' >> /root/.bashrc
 
 # install jq
-RUN JQ=/usr/bin/jq && \
-    wget -O jq https://stedolan.github.io/jq/download/linux64/jq && \
-    chmod +x jq && \
-    mv jq /usr/local/bin/
+# RUN JQ=/usr/bin/jq && \
+#     wget -O jq https://stedolan.github.io/jq/download/linux64/jq && \
+#     chmod +x jq && \
+#     mv jq /usr/local/bin/
 
 # install `python env`
 ENV HOME="/root"
@@ -44,9 +46,9 @@ RUN pyenv install ${PYTHON_VERSION}
 RUN pyenv global ${PYTHON_VERSION}
 
 #install aws_cli v2
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
-    ./aws/install -i /usr/local/aws-cli -b /usr/local/bin && \
+    ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update && \
     rm -rf awscliv2.zip
 
 RUN pip install --upgrade pip && \
