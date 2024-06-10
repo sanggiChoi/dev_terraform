@@ -1,1 +1,2 @@
 stage = "dev"
+namespace = "jk"
