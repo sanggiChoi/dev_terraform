@@ -56,10 +56,9 @@ RUN pip install --upgrade pip && \
 
 # install tfenv
 RUN git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-RUN ~/.tfenv/bin/tfenv install 0.11.15 && \
-    ~/.tfenv/bin/tfenv install 0.12.31 && \
-    ~/.tfenv/bin/tfenv install 1.0.8 && \
-    ~/.tfenv/bin/tfenv install 1.0.11
+RUN ~/.tfenv/bin/tfenv install 1.0.8 && \
+    ~/.tfenv/bin/tfenv install 1.0.11 && \
+    ~/.tfenv/bin/tfenv install 1.3.0
 
 # install terragrunt
 #ENV TERRAGRUNT_VERSION=v0.18.0
