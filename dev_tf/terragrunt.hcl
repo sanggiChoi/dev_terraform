@@ -15,9 +15,9 @@ remote_state {
 
   config = {
     encrypt         = true
-    bucket          = "dev-job-uswe2-tf-s3"
+    bucket          = "jk-dev-s3-tf"
     key             = "prd/${path_relative_to_include()}/tf.tfstate"
-    region          = "us-west-2"
-    dynamodb_table  = "dev-job-uswe2-tf-dynamodb"
+    region          = "ap-northeast-2"
+    dynamodb_table  = "jk-dev-dynamodb-tf"
   }
 }

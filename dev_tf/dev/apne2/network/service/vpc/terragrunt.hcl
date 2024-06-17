@@ -14,10 +14,9 @@ dependencies {
 }
 
 inputs = {
-  name                              = "vpc-service"
-  ipv4_primary_cidr_block           = "172.16.0.0/16"
-  igw_enabled                       = true
-
-  assign_generated_ipv6_cidr_block  = true
-  default_security_group_deny_all   = false
+  name                              = "service"
+  ipv4_primary_cidr_block           = "10.50.208.0/20"
+  internet_gateway_enabled          = false
+  assign_generated_ipv6_cidr_block  = false
+  attributes                        = ["vpc"]
 }
